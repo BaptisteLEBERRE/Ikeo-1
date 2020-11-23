@@ -17,12 +17,13 @@
 
 ### Le schéma entité-association
 
-<img src="Images/Diagramme Ikeo.png">
+<img src="Images/Diagramme_Ikeo.png">
 
 </br></br></br>
 
 ### Le MLD
 
+<img src="Images/MLD_Ikeo.png">
 
 ### Base Exportée
 <p>source/Ikeo.mysql</a>
