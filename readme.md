@@ -17,6 +17,8 @@
 
 ### Le schéma entité-association
 
+<img src="Images/Diagramme Ikeo.png">
+
 </br></br></br>
 
 ### Le MLD
