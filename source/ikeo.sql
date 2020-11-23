@@ -2,16 +2,24 @@
 -- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 20, 2020 at 02:55 PM
--- Server version: 5.7.30
--- PHP Version: 7.3.21
+-- Host: localhost:8081
+-- Generation Time: Nov 23, 2020 at 09:09 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Database: `Ikeo`
+-- Database: `ikeo`
 --
 
 -- --------------------------------------------------------
@@ -67,7 +75,8 @@ INSERT INTO `factures` (`id_facture`, `numero_facture`, `date_facture`, `client_
 (5, 'MSQ295', '2018-07-01', 4),
 (6, 'MSQ296', '2018-07-04', 7),
 (7, 'MSQ297', '2018-07-12', 2),
-(8, 'MSQ298', '2018-08-28', 8);
+(8, 'MSQ298', '2018-08-28', 8),
+(10, 'MSQ299', '2018-08-28', 8);
 
 -- --------------------------------------------------------
 
@@ -108,7 +117,9 @@ INSERT INTO `facutre_produit` (`id_facture`, `id_produit`, `qte_produit`) VALUES
 (7, 4, 20),
 (7, 5, 34),
 (7, 6, 45),
-(8, 5, 18);
+(8, 5, 18),
+(10, 5, 18),
+(10, 5, 18);
 
 -- --------------------------------------------------------
 
@@ -208,7 +219,7 @@ INSERT INTO `types` (`id_type`, `libelle_type`) VALUES
 --
 
 CREATE TABLE `usines` (
-  `id usine` int(11) NOT NULL,
+  `id_usine` int(11) NOT NULL,
   `nom_usine` varchar(50) NOT NULL,
   `adresse_usine` varchar(70) NOT NULL,
   `ville_usine` varchar(50) NOT NULL
@@ -218,7 +229,7 @@ CREATE TABLE `usines` (
 -- Dumping data for table `usines`
 --
 
-INSERT INTO `usines` (`id usine`, `nom_usine`, `adresse_usine`, `ville_usine`) VALUES
+INSERT INTO `usines` (`id_usine`, `nom_usine`, `adresse_usine`, `ville_usine`) VALUES
 (1, 'Harald', 'Quai Pipervika', 'Oslo'),
 (2, 'Sverre', 'Rue Strangehagen', 'Bergen'),
 (3, 'Olaf', 'Place Nidaros', 'Trondheim');
@@ -239,22 +250,6 @@ CREATE TABLE `usine_produit` (
 --
 
 INSERT INTO `usine_produit` (`id_usine`, `id_produit`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 5),
-(1, 6),
-(2, 1),
-(2, 2),
-(2, 5),
-(2, 7),
-(3, 3),
-(3, 4),
-(3, 5),
-(3, 6),
-(3, 7),
-(3, 8),
-(3, 9),
 (1, 1),
 (1, 2),
 (1, 3),
@@ -327,7 +322,7 @@ ALTER TABLE `types`
 -- Indexes for table `usines`
 --
 ALTER TABLE `usines`
-  ADD PRIMARY KEY (`id usine`);
+  ADD PRIMARY KEY (`id_usine`);
 
 --
 -- Indexes for table `usine_produit`
@@ -350,7 +345,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `factures`
 --
 ALTER TABLE `factures`
-  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `pays`
@@ -380,7 +375,7 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT for table `usines`
 --
 ALTER TABLE `usines`
-  MODIFY `id usine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usine` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -412,4 +407,9 @@ ALTER TABLE `facutre_produit`
 --
 ALTER TABLE `usine_produit`
   ADD CONSTRAINT `usine_produit_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`),
-  ADD CONSTRAINT `usine_produit_ibfk_3` FOREIGN KEY (`id_usine`) REFERENCES `usines` (`id usine`);
+  ADD CONSTRAINT `usine_produit_ibfk_3` FOREIGN KEY (`id_usine`) REFERENCES `usines` (`id_usine`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
